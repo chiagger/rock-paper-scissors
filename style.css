@@ -5,22 +5,47 @@ body {
 }
 
 .header {
-    background-color:aquamarine;
+    background-color:#14213d;
     padding: 50px;
     display:flex;
     align-items: center;
     justify-content: center;
     font-size: 48px;
+    color:#e5e5e5;
 }
 
 .game {
-    background-color: azure;
+    background-color: #e5e5e5;
     padding: 100px;
+    display:flex;
+    align-items: center;
+    justify-content: space-evenly;
+   
+}
+
+.game .right #score {
+    font-size: 40px;
+}
+
+.game .left {
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap:25px;
+}
+
+.game .right {
+    display:flex;
+    flex-direction: column;
+    gap:25px;
+
+}
+
+.game .right .players {
+    font-size: 20px;
+    display:flex;
+    gap: 40px;
 }
 
 .game .text {
@@ -30,8 +55,30 @@ body {
 .game .buttons {
     display:flex;
     gap:10px;
+    
 }
 
 .game button {
     font-size: 25px;
+    border-radius: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #fca311;
+}
+
+#results {
+    background-color:#000000;
+    padding: 60px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#results .title {
+    font-size: 40px;
+    font-weight: bold;
+    color: #fca311;
 }

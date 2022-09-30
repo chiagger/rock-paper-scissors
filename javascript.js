@@ -30,39 +30,111 @@ function choice(number) {
     return result;
 }
 
-
+let youScore=0;
+let compScore=0;
 
 function playRound(playerSelection, computerSelection) {
-    let result;
+    const container = document.getElementById('results');
+    const tie = document.createElement('p');
+        tie.textContent='Tie';
+        tie.style.color= '#e5e5e5';
+    const win = document.createElement('p');
+    win.textContent='You Win';
+    win.style.color=  '#e5e5e5';
+    const lose = document.createElement('p');
+    lose.textContent='You Lose';
+    lose.style.color=  '#e5e5e5';
+
+    const yourScoreContainer = document.getElementById('you');
+    const compScoreContainer = document.getElementById('comp');
+    const yourScore = document.createElement('div');
+    const comptScore = document.createElement('div');
+    let oldchild;
+    
     if (playerSelection===computerSelection) {
-        console.log("Tie");
-        result=0;
+        container.appendChild(tie);
+        yourScore.textContent=youScore.toString();
+        comptScore.textContent=compScore.toString();
+        yourScoreContainer.appendChild(yourScore);
+        compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===0 && computerSelection===1) {
-        console.log("You lose");
-        result=0;
+        container.appendChild(lose);
+        compScore+=1;
+        yourScore.textContent=youScore.toString();
+        comptScore.textContent=compScore.toString();
+        yourScoreContainer.appendChild(yourScore);
+        compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===0 && computerSelection===2) {
-        console.log("You win");
-        result=1;
+        container.appendChild(win);
+        youScore+=1;
+        yourScore.textContent=youScore.toString();
+        comptScore.textContent=compScore.toString();
+        yourScoreContainer.appendChild(yourScore);
+        compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===1 && computerSelection===0) {
-        console.log("You win");
-        result=1;
+        container.appendChild(win);
+        youScore+=1;
+        yourScore.textContent=youScore.toString();
+        comptScore.textContent=compScore.toString();
+        yourScoreContainer.appendChild(yourScore);
+        compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===1 && computerSelection===2) {
-        console.log("You lose");
-        result=0;
+        container.appendChild(lose);
+        compScore+=1;
+        yourScore.textContent=youScore.toString();
+        comptScore.textContent=compScore.toString();
+        yourScoreContainer.appendChild(yourScore);
+        compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===2 && computerSelection===0) {
-        console.log("You lose");
-        result=0;
+        container.appendChild(lose);
+        compScore+=1;
+        yourScore.textContent=youScore.toString();
+        comptScore.textContent=compScore.toString();
+        yourScoreContainer.appendChild(yourScore);
+        compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===2 && computerSelection===1) {
-        console.log("You win");
-        result=1;
+        container.appendChild(win);
+        youScore+=1;
+        yourScore.textContent=youScore.toString();
+        comptScore.textContent=compScore.toString();
+        yourScoreContainer.appendChild(yourScore);
+        compScoreContainer.appendChild(comptScore);
     }
-    return result;
+
+    
+    const finalRes = document.getElementById('score');
+    
+        if (youScore ===5 && compScore ===5) {
+            const finalTie = document.createElement('div');
+            finalTie.textContent="TIE";
+            finalRes.appendChild(finalTie);
+            document.getElementById('rock').setAttribute('disabled','disabled');
+            document.getElementById('paper').setAttribute('disabled','disabled');
+            document.getElementById('scissors').setAttribute('disabled','disabled');
+        } else if (youScore===5) {
+            const finalWin = document.createElement('div');
+            finalWin.textContent="YOU WIN!!!";
+            finalRes.appendChild(finalWin);
+            document.getElementById('rock').setAttribute('disabled','disabled');
+            document.getElementById('paper').setAttribute('disabled','disabled');
+            document.getElementById('scissors').setAttribute('disabled','disabled');
+        } else if (compScore===5) {
+            const finalLose = document.createElement('div');
+            finalLose.textContent="YOU LOSE...";
+            finalRes.appendChild(finalLose);
+            document.getElementById('rock').setAttribute('disabled','disabled');
+            document.getElementById('paper').setAttribute('disabled','disabled');
+            document.getElementById('scissors').setAttribute('disabled','disabled');
+        }
+    //console.log(btn);
+    
+
 }
 
 
@@ -82,33 +154,14 @@ function playerSelect(e, playerChoice) {
 
 
 function game() {
-   /* let rounds = 4;
-    let myWins=0;
-   // for (let i=0; i<rounds; i++) {*/
+   
+    if (youScore === 5 ) {
+        window.alert("YOU WIN!");
+    }
         let playerChoice;
         playerSelect(playerChoice);
         
-        /*let comp = getComputerChoice();
-        let you =  playerChoice;
-        console.log("Computer: "+ choice(comp));
-        console.log("You: "+choice(you));
-       // myWins += playRound(you, comp);
-    /*}
-    if (rounds%2 != 0) {
-        if (myWins >= rounds/2) {
-            console.log("You win!!!!");
-         } else {
-             console.log("You lose!!!");
-         }
-    } else if (rounds%2==0) {
-        if (myWins===rounds/2)  {
-            console.log("Tie!!!");
-        } else if (myWins > rounds/2) {
-            console.log("You win!!!!");
-         } else {
-             console.log("You lose!!!");
-         }
-    }*/
+        
     
 }
 
