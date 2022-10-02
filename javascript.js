@@ -49,6 +49,8 @@ function playRound(playerSelection, computerSelection) {
     const compScoreContainer = document.getElementById('comp');
     const yourScore = document.createElement('div');
     const comptScore = document.createElement('div');
+    const oldyouScore = document.querySelector("#you div");
+    const oldcompScore = document.querySelector("#comp div");
     
     if (playerSelection===computerSelection) {
         const oldChild = document.querySelector("#results p");
@@ -57,10 +59,19 @@ function playRound(playerSelection, computerSelection) {
         } else {
             container.appendChild(tie);
         }
+       
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
-        yourScoreContainer.appendChild(yourScore);
-        compScoreContainer.appendChild(comptScore);
+        if (oldyouScore) {
+            yourScoreContainer.replaceChild(yourScore,oldyouScore);
+        } else {
+            yourScoreContainer.appendChild(yourScore);        
+        }
+        if (oldcompScore) {
+            compScoreContainer.replaceChild(comptScore,oldcompScore);
+        } else {
+            compScoreContainer.appendChild(comptScore);
+        } 
     }
     if (playerSelection===0 && computerSelection===1) {
         const oldChild = document.querySelector("#results p");
@@ -72,8 +83,16 @@ function playRound(playerSelection, computerSelection) {
         compScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
-        yourScoreContainer.appendChild(yourScore);
-        compScoreContainer.appendChild(comptScore);
+        if (oldyouScore) {
+            yourScoreContainer.replaceChild(yourScore,oldyouScore);
+        } else {
+            yourScoreContainer.appendChild(yourScore);        
+        }
+        if (oldcompScore) {
+            compScoreContainer.replaceChild(comptScore,oldcompScore);
+        } else {
+            compScoreContainer.appendChild(comptScore);
+        } 
     }
     if (playerSelection===0 && computerSelection===2) {
         const oldChild = document.querySelector("#results p");
@@ -85,8 +104,16 @@ function playRound(playerSelection, computerSelection) {
         youScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
-        yourScoreContainer.appendChild(yourScore);
-        compScoreContainer.appendChild(comptScore);
+        if (oldyouScore) {
+            yourScoreContainer.replaceChild(yourScore,oldyouScore);
+        } else {
+            yourScoreContainer.appendChild(yourScore);        
+        }
+        if (oldcompScore) {
+            compScoreContainer.replaceChild(comptScore,oldcompScore);
+        } else {
+            compScoreContainer.appendChild(comptScore);
+        } 
     }
     if (playerSelection===1 && computerSelection===0) {
         const oldChild = document.querySelector("#results p");
@@ -98,8 +125,16 @@ function playRound(playerSelection, computerSelection) {
         youScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
-        yourScoreContainer.appendChild(yourScore);
-        compScoreContainer.appendChild(comptScore);
+        if (oldyouScore) {
+            yourScoreContainer.replaceChild(yourScore,oldyouScore);
+        } else {
+            yourScoreContainer.appendChild(yourScore);        
+        }
+        if (oldcompScore) {
+            compScoreContainer.replaceChild(comptScore,oldcompScore);
+        } else {
+            compScoreContainer.appendChild(comptScore);
+        } 
     }
     if (playerSelection===1 && computerSelection===2) {
         const oldChild = document.querySelector("#results p");
@@ -107,11 +142,20 @@ function playRound(playerSelection, computerSelection) {
             container.replaceChild(lose,oldChild);
         } else {
             container.appendChild(lose);
-        }        compScore+=1;
+        }        
+        compScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
-        yourScoreContainer.appendChild(yourScore);
-        compScoreContainer.appendChild(comptScore);
+        if (oldyouScore) {
+            yourScoreContainer.replaceChild(yourScore,oldyouScore);
+        } else {
+            yourScoreContainer.appendChild(yourScore);        
+        }
+        if (oldcompScore) {
+            compScoreContainer.replaceChild(comptScore,oldcompScore);
+        } else {
+            compScoreContainer.appendChild(comptScore);
+        } 
     }
     if (playerSelection===2 && computerSelection===0) {
         const oldChild = document.querySelector("#results p");
@@ -119,11 +163,20 @@ function playRound(playerSelection, computerSelection) {
             container.replaceChild(lose,oldChild);
         } else {
             container.appendChild(lose);
-        }        compScore+=1;
+        }        
+        compScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
-        yourScoreContainer.appendChild(yourScore);
-        compScoreContainer.appendChild(comptScore);
+        if (oldyouScore) {
+            yourScoreContainer.replaceChild(yourScore,oldyouScore);
+        } else {
+            yourScoreContainer.appendChild(yourScore);        
+        }
+        if (oldcompScore) {
+            compScoreContainer.replaceChild(comptScore,oldcompScore);
+        } else {
+            compScoreContainer.appendChild(comptScore);
+        } 
     }
     if (playerSelection===2 && computerSelection===1) {
         const oldChild = document.querySelector("#results p");
@@ -135,14 +188,33 @@ function playRound(playerSelection, computerSelection) {
         youScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
-        yourScoreContainer.appendChild(yourScore);
-        compScoreContainer.appendChild(comptScore);
+        if (oldyouScore) {
+            yourScoreContainer.replaceChild(yourScore,oldyouScore);
+        } else {
+            yourScoreContainer.appendChild(yourScore);        
+        }
+        if (oldcompScore) {
+            compScoreContainer.replaceChild(comptScore,oldcompScore);
+        } else {
+            compScoreContainer.appendChild(comptScore);
+        } 
     }
 
     
     const finalRes = document.querySelector("#results div");
+    const playagainContainer = document.querySelector("#results #playagain");
+    const playagainButton = document.createElement('button');
+   // playagainButton.style.width='250px';
+   // playagainButton.style.height='60px';
+    playagainButton.textContent='Play Again';
+    playagainButton.style.backgroundColor='#e5e5e5';
+    playagainButton.style.color='gray';
+    playagainButton.style.fontSize='15px';
+
     
         if (youScore ===5 && compScore ===5) {
+            const oldChild = document.querySelector("#results p");
+            container.removeChild(oldChild);
             const finalTie = document.createElement('div');
             finalTie.textContent="TIE";
             finalTie.style.textAlign='center';
@@ -150,7 +222,15 @@ function playRound(playerSelection, computerSelection) {
             document.getElementById('rock').setAttribute('disabled','disabled');
             document.getElementById('paper').setAttribute('disabled','disabled');
             document.getElementById('scissors').setAttribute('disabled','disabled');
+
+            playagainContainer.appendChild(playagainButton);
+            playagainButton.addEventListener('click', function refresh() {
+                window.location.reload(true);
+            });
+
         } else if (youScore===5) {
+            const oldChild = document.querySelector("#results p");
+            container.removeChild(oldChild);
             const finalWin = document.createElement('div');
             finalWin.textContent="YOU WIN!!!";
             finalWin.style.textAlign='center';
@@ -158,7 +238,13 @@ function playRound(playerSelection, computerSelection) {
             document.getElementById('rock').setAttribute('disabled','disabled');
             document.getElementById('paper').setAttribute('disabled','disabled');
             document.getElementById('scissors').setAttribute('disabled','disabled');
+            playagainContainer.appendChild(playagainButton);
+            playagainButton.addEventListener('click', function refresh() {
+                window.location.reload(true);
+            });
         } else if (compScore===5) {
+            const oldChild = document.querySelector("#results p");
+            container.removeChild(oldChild);
             const finalLose = document.createElement('div');
             finalLose.textContent="YOU LOSE...";
             finalLose.style.textAlign='center';
@@ -166,10 +252,11 @@ function playRound(playerSelection, computerSelection) {
             document.getElementById('rock').setAttribute('disabled','disabled');
             document.getElementById('paper').setAttribute('disabled','disabled');
             document.getElementById('scissors').setAttribute('disabled','disabled');
+            playagainContainer.appendChild(playagainButton);
+            playagainButton.addEventListener('click', function refresh() {
+                window.location.reload(true);
+            });
         }
-    //console.log(btn);
-    
-
 }
 
 
