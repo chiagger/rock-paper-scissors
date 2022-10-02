@@ -36,30 +36,39 @@ let compScore=0;
 function playRound(playerSelection, computerSelection) {
     const container = document.getElementById('results');
     const tie = document.createElement('p');
-        tie.textContent='Tie';
+        tie.textContent='Tie for this round';
         tie.style.color= '#e5e5e5';
     const win = document.createElement('p');
-    win.textContent='You Win';
+    win.textContent='You Win this round';
     win.style.color=  '#e5e5e5';
     const lose = document.createElement('p');
-    lose.textContent='You Lose';
+    lose.textContent='You Lose this round';
     lose.style.color=  '#e5e5e5';
 
     const yourScoreContainer = document.getElementById('you');
     const compScoreContainer = document.getElementById('comp');
     const yourScore = document.createElement('div');
     const comptScore = document.createElement('div');
-    let oldchild;
     
     if (playerSelection===computerSelection) {
-        container.appendChild(tie);
+        const oldChild = document.querySelector("#results p");
+        if (oldChild) {
+            container.replaceChild(tie,oldChild);
+        } else {
+            container.appendChild(tie);
+        }
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
         yourScoreContainer.appendChild(yourScore);
         compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===0 && computerSelection===1) {
-        container.appendChild(lose);
+        const oldChild = document.querySelector("#results p");
+        if (oldChild) {
+            container.replaceChild(lose,oldChild);
+        } else {
+            container.appendChild(lose);
+        }
         compScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
@@ -67,7 +76,12 @@ function playRound(playerSelection, computerSelection) {
         compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===0 && computerSelection===2) {
-        container.appendChild(win);
+        const oldChild = document.querySelector("#results p");
+        if (oldChild) {
+            container.replaceChild(win,oldChild);
+        } else {
+            container.appendChild(win);
+        }  
         youScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
@@ -75,7 +89,12 @@ function playRound(playerSelection, computerSelection) {
         compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===1 && computerSelection===0) {
-        container.appendChild(win);
+        const oldChild = document.querySelector("#results p");
+        if (oldChild) {
+            container.replaceChild(win,oldChild);
+        } else {
+            container.appendChild(win);
+        }  
         youScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
@@ -83,23 +102,36 @@ function playRound(playerSelection, computerSelection) {
         compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===1 && computerSelection===2) {
-        container.appendChild(lose);
-        compScore+=1;
+        const oldChild = document.querySelector("#results p");
+        if (oldChild) {
+            container.replaceChild(lose,oldChild);
+        } else {
+            container.appendChild(lose);
+        }        compScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
         yourScoreContainer.appendChild(yourScore);
         compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===2 && computerSelection===0) {
-        container.appendChild(lose);
-        compScore+=1;
+        const oldChild = document.querySelector("#results p");
+        if (oldChild) {
+            container.replaceChild(lose,oldChild);
+        } else {
+            container.appendChild(lose);
+        }        compScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
         yourScoreContainer.appendChild(yourScore);
         compScoreContainer.appendChild(comptScore);
     }
     if (playerSelection===2 && computerSelection===1) {
-        container.appendChild(win);
+        const oldChild = document.querySelector("#results p");
+        if (oldChild) {
+            container.replaceChild(win,oldChild);
+        } else {
+            container.appendChild(win);
+        }        
         youScore+=1;
         yourScore.textContent=youScore.toString();
         comptScore.textContent=compScore.toString();
@@ -108,11 +140,12 @@ function playRound(playerSelection, computerSelection) {
     }
 
     
-    const finalRes = document.getElementById('score');
+    const finalRes = document.querySelector("#results div");
     
         if (youScore ===5 && compScore ===5) {
             const finalTie = document.createElement('div');
             finalTie.textContent="TIE";
+            finalTie.style.textAlign='center';
             finalRes.appendChild(finalTie);
             document.getElementById('rock').setAttribute('disabled','disabled');
             document.getElementById('paper').setAttribute('disabled','disabled');
@@ -120,6 +153,7 @@ function playRound(playerSelection, computerSelection) {
         } else if (youScore===5) {
             const finalWin = document.createElement('div');
             finalWin.textContent="YOU WIN!!!";
+            finalWin.style.textAlign='center';
             finalRes.appendChild(finalWin);
             document.getElementById('rock').setAttribute('disabled','disabled');
             document.getElementById('paper').setAttribute('disabled','disabled');
@@ -127,6 +161,7 @@ function playRound(playerSelection, computerSelection) {
         } else if (compScore===5) {
             const finalLose = document.createElement('div');
             finalLose.textContent="YOU LOSE...";
+            finalLose.style.textAlign='center';
             finalRes.appendChild(finalLose);
             document.getElementById('rock').setAttribute('disabled','disabled');
             document.getElementById('paper').setAttribute('disabled','disabled');

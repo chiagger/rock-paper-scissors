@@ -82,3 +82,7 @@ body {
     font-weight: bold;
     color: #fca311;
 }
+
+#results .title {
+    text-align: center;
+}
